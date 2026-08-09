@@ -96,6 +96,27 @@ export const categories: Category[] = [
       { title: "Dai Dai", artist: "Shakira, Burna Boy", youtubeId: "H-IGHes_iig" },
     ],
   },
+  {
+    slug: "bhakti",
+    title: "Bhakti",
+    tagline: "Diyas lit, incense curling, hands folded before sunrise",
+    bgImage: "/images/bg-bhakti.png",
+    listenerBase: 402,
+    links: {
+      spotify: "https://open.spotify.com/search/morning%20bhajans",
+      ytmusic: "https://music.youtube.com/search?q=morning+bhajans",
+    },
+    tracks: [
+      { title: "Hanuman Chalisa", artist: "Hariharan", youtubeId: "9tb2s_HhpwA" },
+      { title: "Om Jai Jagdish Hare", artist: "T-Series Bhakti", youtubeId: "rNRgdSMjoDM" },
+      { title: "Jai Ganesh Deva", artist: "Anuradha Paudwal", youtubeId: "lEN_tHzruSE" },
+      { title: "Achyutam Keshavam", artist: "Suresh Wadkar", youtubeId: "4D7x8MIaZjM" },
+      { title: "Vaishnav Jan To", artist: "Lata Mangeshkar", youtubeId: "2Nls0ObfCWE" },
+      { title: "Raghupati Raghav Raja Ram", artist: "Sachet Tandon", youtubeId: "z15ovAzxbQk" },
+      { title: "Shri Krishna Govind Hare Murari", artist: "Jubin Nautiyal", youtubeId: "1qmPNot9NJs" },
+      { title: "Gayatri Mantra (108 Times)", artist: "Anuradha Paudwal", youtubeId: "nwRoHC83wx0" },
+    ],
+  },
 ];
 
 export function getCategory(slug: string): Category | undefined {
