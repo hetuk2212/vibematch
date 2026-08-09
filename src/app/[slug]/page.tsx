@@ -7,6 +7,7 @@ import LiveClock from "@/components/LiveClock";
 import Player from "@/components/Player";
 import { ExternalArrowIcon, LinkGlyphIcon } from "@/components/icons";
 import { categories, getCategory } from "@/data/categories";
+import { SITE_URL } from "@/lib/site";
 
 type Props = { params: { slug: string } };
 
@@ -17,9 +18,24 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Props): Metadata {
   const category = getCategory(params.slug);
   if (!category) return {};
+
+  const url = `${SITE_URL}/${category.slug}`;
+
   return {
-    title: `${category.title} — vibe radio`,
+    title: category.title,
     description: category.tagline,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: category.title,
+      description: category.tagline,
+      url,
+    },
+    twitter: {
+      title: category.title,
+      description: category.tagline,
+    },
   };
 }
 
