@@ -52,7 +52,7 @@ export default function CategoryPage({ params }: Props) {
             <LiveClock />
           </Link>
 
-          <ListenerCount base={category.listenerBase} className="vibe-topbar-listeners" />
+          <ListenerCount slug={category.slug} className="vibe-topbar-listeners" />
 
           <div className="vibe-topbar-links">
             <a

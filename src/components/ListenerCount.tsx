@@ -1,33 +1,45 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { getSupabaseClient } from "@/lib/supabaseClient";
 
 type ListenerCountProps = {
-  base: number;
+  slug: string;
   className?: string;
 };
 
-export default function ListenerCount({ base, className }: ListenerCountProps) {
-  const [count, setCount] = useState(base);
+export default function ListenerCount({ slug, className }: ListenerCountProps) {
+  const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
-    const min = Math.round(base * 0.6);
-    const max = Math.round(base * 1.4);
+    const supabase = getSupabaseClient();
+    if (!supabase) return;
 
-    const id = setInterval(() => {
-      setCount((prev) => {
-        const drift = Math.round((Math.random() - 0.5) * 14);
-        return Math.min(max, Math.max(min, prev + drift));
+    setCount(null);
+
+    const channel = supabase.channel(`listeners:${slug}`, {
+      config: { presence: { key: crypto.randomUUID() } },
+    });
+
+    channel
+      .on("presence", { event: "sync" }, () => {
+        setCount(Object.keys(channel.presenceState()).length);
+      })
+      .subscribe(async (status) => {
+        if (status === "SUBSCRIBED") {
+          await channel.track({ online_at: new Date().toISOString() });
+        }
       });
-    }, 2500 + Math.random() * 2000);
 
-    return () => clearInterval(id);
-  }, [base]);
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [slug]);
 
   return (
     <span className={className}>
       <span className="vibe-live-dot" aria-hidden="true" />
-      {count.toLocaleString()} listening
+      {count === null ? "—" : count.toLocaleString()} listening
     </span>
   );
 }

@@ -16,8 +16,6 @@ export type Category = {
     spotify: string;
     ytmusic: string;
   };
-  /** Base for the simulated live listener count. */
-  listenerBase: number;
 };
 
 // Placeholder stock photography (Picsum, seeded for stability) — used only for the
@@ -32,7 +30,6 @@ export const categories: Category[] = [
     title: "90s Bollywood",
     tagline: "What plays at every Indian barber shop",
     bgImage: "/images/bg-90s-bollywood.png",
-    listenerBase: 612,
     links: {
       spotify: "https://open.spotify.com/search/90s%20bollywood%20hits",
       ytmusic: "https://music.youtube.com/search?q=90s+bollywood+hits",
@@ -55,7 +52,6 @@ export const categories: Category[] = [
     title: "Gujarati",
     tagline: "Garba, folk, and the songs every Gujarati home knows",
     bgImage: "/images/bg-gujarati.png",
-    listenerBase: 348,
     links: {
       spotify: "https://open.spotify.com/search/gujarati%20garba%20hits",
       ytmusic: "https://music.youtube.com/search?q=gujarati+garba+hits",
@@ -78,7 +74,6 @@ export const categories: Category[] = [
     title: "English",
     tagline: "What's actually playing right now",
     bgImage: "/images/bg-english.png",
-    listenerBase: 745,
     links: {
       spotify: "https://open.spotify.com/search/trending%20pop%20hits",
       ytmusic: "https://music.youtube.com/search?q=trending+pop+hits",
@@ -101,7 +96,6 @@ export const categories: Category[] = [
     title: "Bhakti",
     tagline: "Diyas lit, incense curling, hands folded before sunrise",
     bgImage: "/images/bg-bhakti.png",
-    listenerBase: 402,
     links: {
       spotify: "https://open.spotify.com/search/morning%20bhajans",
       ytmusic: "https://music.youtube.com/search?q=morning+bhajans",
